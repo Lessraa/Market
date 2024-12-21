@@ -325,7 +325,7 @@ namespace Market
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void button3_Click(object sender, EventArgs e)
+        /*private void button3_Click(object sender, EventArgs e)
         {
             try
             {
@@ -342,7 +342,7 @@ namespace Market
                 MessageBox.Show($"Tarayıcı açılırken hata oluştu: {ex.Message}",
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }*/ 
 
         private void button1_Click_1(object sender, EventArgs e)
         {

@@ -44,7 +44,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -208,16 +207,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Ürün adı : ";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(887, 535);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(130, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Canlı Destek";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // listView1
             // 
             this.listView1.HideSelection = false;
@@ -259,7 +248,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(737, 535);
+            this.button5.Location = new System.Drawing.Point(873, 535);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(144, 23);
             this.button5.TabIndex = 8;
@@ -276,7 +265,6 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -306,7 +294,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;

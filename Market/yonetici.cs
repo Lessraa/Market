@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Npgsql;
 using System.Drawing;
 using System.IO;
+using System.Linq.Expressions;
 
 namespace Market
 {
@@ -416,6 +417,8 @@ namespace Market
             // ListView'lar için click olayları
             listView1.Click += ListView1_Click;
             listView2.Click += ListView2_Click;
+
+            
         }
 
         private void LoadProducts()
@@ -577,6 +580,53 @@ namespace Market
             }
         }
 
+        private void ShowTotalProfitAndSoldItems()
+        {
+            try
+            {
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = @"
+                SELECT 
+                    SUM((tuketici_fiyati - alis_fiyati) * satilan_adet) AS toplam_kar,
+                    SUM(satilan_adet) AS toplam_satilan_adet
+                FROM urunler";
+
+                    using (var command = new NpgsqlCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                decimal totalProfit = reader.IsDBNull(0) ? 0 : reader.GetDecimal(0);
+                                int totalSoldItems = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
+
+                                listBox2.Items.Clear(); // Clear previous items
+                                listBox2.Items.Add($"Toplam Kâr: {totalProfit:C2}");
+                                listBox2.Items.Add($"Toplam Satılan Ürün Adedi: {totalSoldItems}");
+                            }
+                            else
+                            {
+                                listBox2.Items.Clear();
+                                listBox2.Items.Add("Kâr ve satılan ürün bilgisi bulunamadı.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Toplam kâr ve satılan ürün bilgisi yüklenirken hata: {ex.Message}",
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
+
         private void ListView2_Click(object sender, EventArgs e)
         {
             if (listView2.SelectedItems.Count > 0)
@@ -631,6 +681,7 @@ namespace Market
             KullanicilariListele();
             SetupListViews();
             LoadProducts();
+            ShowTotalProfitAndSoldItems(); 
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -644,6 +695,21 @@ namespace Market
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
