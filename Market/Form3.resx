@@ -117,44 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="61W" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\61W.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="asd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\asd.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="desktop-wallpaper-teal-iphone-turquoise-and-black-thumbnail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\desktop-wallpaper-teal-iphone-turquoise-and-black-thumbnail.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="360_F_860318940_RPEYG8qhieE8pyk4Fnc1N4qGEU2avo0q" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\360_F_860318940_RPEYG8qhieE8pyk4Fnc1N4qGEU2avo0q.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pngwing.com (11)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pngwing.com (11).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="gaplumbaa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gaplumbaa.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="2d-graphic-wallpaper-with-colorful-grainy-gradients" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2d-graphic-wallpaper-with-colorful-grainy-gradients.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Adsız tasarım" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Adsız tasarım.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="f59f55021806b80938219ea0213e09ef" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\f59f55021806b80938219ea0213e09ef.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="add-user-symbol-interface_47768" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add-user-symbol-interface_47768.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icegif-608 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icegif-608 (1).gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="e98f13ab9d" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\e98f13ab9d.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>
