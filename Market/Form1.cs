@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using Npgsql;
 
@@ -19,6 +20,11 @@ namespace Market
                              "Password=476634.Ss";
         }
 
+        public static int userId;
+        public static string userName;
+        public static string userPassword;
+        public static string userType;
+
         private void button1_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text.Trim();
@@ -37,7 +43,7 @@ namespace Market
                 {
                     connection.Open();
 
-                    string query = @"SELECT id, kullanici_adi, kullanici_tipi 
+                    string query = @"SELECT id, kullanici_adi,sifre, kullanici_tipi 
                                    FROM kullanicilar 
                                    WHERE kullanici_adi = @username 
                                    AND sifre = @password";
@@ -51,9 +57,10 @@ namespace Market
                         {
                             if (reader.Read())
                             {
-                                int userId = reader.GetInt32(0);
-                                string userName = reader.GetString(1);
-                                string userType = reader.GetString(2);
+                                 userId = reader.GetInt32(0);
+                                userName = reader.GetString(1);
+                                userPassword = reader.GetString(2);
+                                 userType = reader.GetString(3);
 
                                 MessageBox.Show("Giriş başarılı!", "Başarılı",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);

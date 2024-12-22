@@ -16,6 +16,8 @@ namespace Market
 
         public yonetici()
         {
+
+            
             InitializeComponent();
 
             connectionString = "Host=93.113.57.54;" +
@@ -299,18 +301,58 @@ namespace Market
 
         private void KullaniciTipiGuncelle(int kullaniciId, string yeniTip)
         {
+            /* try
+             {
+                 using (var connection = new NpgsqlConnection(connectionString))
+                 {
+                     connection.Open();
+                     string query = $"UPDATE kullanicilar SET kullanici_tipi = '{yeniTip}'::kullanici_tipi_enum WHERE id = @id";
+
+                     using (var command = new NpgsqlCommand(query, connection))
+                     {
+                         command.Parameters.AddWithValue("@id", kullaniciId);
+                         int etkilenenSatir = command.ExecuteNonQuery();
+
+                         if (etkilenenSatir > 0)
+                         {
+                             MessageBox.Show("Kullanıcı tipi başarıyla güncellendi.",
+                                 "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                             KullanicilariListele();
+                         }
+                         else
+                         {
+                             MessageBox.Show("Kullanıcı tipi güncellenirken bir hata oluştu.",
+                                 "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                         }
+                     }
+                 }
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show($"Güncelleme işlemi sırasında hata oluştu: {ex.Message}",
+                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }*/
+
+
             try
             {
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = $"UPDATE kullanicilar SET kullanici_tipi = '{yeniTip}'::kullanici_tipi_enum WHERE id = @id";
+
+                    // Sorgu tanımı
+                    const string query = "UPDATE kullanicilar SET kullanici_tipi = @yeniTip::kullanici_tipi_enum WHERE id = @id";
 
                     using (var command = new NpgsqlCommand(query, connection))
                     {
+                        // Parametrelerin eklenmesi
+                        command.Parameters.AddWithValue("@yeniTip", yeniTip);
                         command.Parameters.AddWithValue("@id", kullaniciId);
+
+                        // Sorguyu çalıştır ve etkilenen satır sayısını al
                         int etkilenenSatir = command.ExecuteNonQuery();
 
+                        // Sonuç kontrolü
                         if (etkilenenSatir > 0)
                         {
                             MessageBox.Show("Kullanıcı tipi başarıyla güncellendi.",
@@ -330,6 +372,7 @@ namespace Market
                 MessageBox.Show($"Güncelleme işlemi sırasında hata oluştu: {ex.Message}",
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -599,7 +642,7 @@ namespace Market
                         {
                             if (reader.Read())
                             {
-                                decimal totalProfit = reader.IsDBNull(0) ? 0 : reader.GetDecimal(0);
+                                decimal totalProfit = reader.IsDBNull(0) ? 0 : reader.GetDecimal(0) ;
                                 int totalSoldItems = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
 
                                 listBox2.Items.Clear(); // Clear previous items
@@ -610,6 +653,7 @@ namespace Market
                             {
                                 listBox2.Items.Clear();
                                 listBox2.Items.Add("Kâr ve satılan ürün bilgisi bulunamadı.");
+                            
                             }
                         }
                     }
@@ -712,6 +756,18 @@ namespace Market
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+            kullanicilar kullanicilarFormu = new kullanicilar();
+            kullanicilarFormu.Show();
         }
     }
 }

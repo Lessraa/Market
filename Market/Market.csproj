@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -95,6 +95,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AktifKullanici.cs" />
     <Compile Include="Chat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +110,12 @@
     </Compile>
     <Compile Include="GirisTipi.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kullanicilar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kullanicilar.Designer.cs">
+      <DependentUpon>kullanicilar.cs</DependentUpon>
     </Compile>
     <Compile Include="MiktarGirisForm.cs">
       <SubType>Form</SubType>
@@ -135,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GirisTipi.resx">
       <DependentUpon>GirisTipi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kullanicilar.resx">
+      <DependentUpon>kullanicilar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MiktarGirisForm.resx">
       <DependentUpon>MiktarGirisForm.cs</DependentUpon>
