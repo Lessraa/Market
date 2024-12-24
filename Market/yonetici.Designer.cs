@@ -30,7 +30,7 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -68,13 +68,13 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listView1);
-            this.groupBox2.Location = new System.Drawing.Point(557, 13);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(343, 475);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ürünler";
+            //this.groupBox2.Controls.Add(this.listView1);
+            //this.groupBox2.Location = new System.Drawing.Point(557, 13);
+            //this.groupBox2.Name = "groupBox2";
+            //this.groupBox2.Size = new System.Drawing.Size(343, 475);
+            //this.groupBox2.TabIndex = 1;
+            //this.groupBox2.TabStop = false;
+            //this.groupBox2.Text = "Ürünler";
             // 
             // listView1
             // 

@@ -73,6 +73,16 @@ namespace Market.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap _2d_graphic_wallpaper_with_colorful_grainy_gradients__2_ {
+            get {
+                object obj = ResourceManager.GetObject("2d-graphic-wallpaper-with-colorful-grainy-gradients (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap _360_F_860318940_RPEYG8qhieE8pyk4Fnc1N4qGEU2avo0q {
             get {
                 object obj = ResourceManager.GetObject("360_F_860318940_RPEYG8qhieE8pyk4Fnc1N4qGEU2avo0q", resourceCulture);
@@ -186,6 +196,36 @@ namespace Market.Properties {
         internal static System.Drawing.Bitmap pngwing_com__11_ {
             get {
                 object obj = ResourceManager.GetObject("pngwing.com (11)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com__12_ {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com (12)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com__13_ {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com (13)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com__14_ {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com (14)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

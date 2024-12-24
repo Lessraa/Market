@@ -112,6 +112,7 @@
             this.textBox1.Size = new System.Drawing.Size(304, 23);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "Kullanıcı Adı";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
@@ -178,6 +179,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form3";
             this.Text = "Form3";
+            this.Load += new System.EventHandler(this.Form3_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form3_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form3_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form3_MouseUp);

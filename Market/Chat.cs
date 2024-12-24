@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Npgsql;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Market
 {
@@ -99,6 +100,29 @@ namespace Market
             else
             {
                 MessageBox.Show("Lütfen bir mesaj yazın!");
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Yaz..")
+            {
+                textBox1.Text = "";
+                textBox1.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Yaz..";
+                textBox1.ForeColor = Color.Black;
             }
         }
     }

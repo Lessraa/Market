@@ -79,5 +79,15 @@ namespace Market
                 this.SetDesktopLocation(MousePosition.X - MValX, MousePosition.Y - MValY);
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
