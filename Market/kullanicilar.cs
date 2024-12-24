@@ -35,14 +35,17 @@ namespace Market
             // DataGridView ayarları
             kullaniciList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+          
+
 
 
             // Event handlers
             kullaniciList.CellClick += kullaniciList_CellClick;
             kullaniciList.CellContentClick += kullaniciList_CellContentClick;
 
+          
 
-            yoneticiText.Text = Form1.userType;
+
             
 
         }
@@ -66,6 +69,9 @@ namespace Market
                         kullaniciList.DataSource = null;
                         kullaniciList.Columns.Clear();
 
+                       
+
+
                         // Resim kolonu ekle
                         DataGridViewImageColumn resimKolonu = new DataGridViewImageColumn();
                         resimKolonu.HeaderText = "Resim";
@@ -73,6 +79,10 @@ namespace Market
                         resimKolonu.ImageLayout = DataGridViewImageCellLayout.Zoom;
                         resimKolonu.Width = 200;
                         kullaniciList.Columns.Add(resimKolonu);
+
+                      
+
+
 
                         // Diğer kolonları ekle
                         foreach (DataColumn col in dataTable.Columns)
@@ -369,9 +379,10 @@ namespace Market
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void kullaniciEkle_Click(object sender, EventArgs e)
         {
-
+            Form3 kullaniciEklemeFormu = new Form3();
+            kullaniciEklemeFormu.Show();
         }
 
         private void ppGuncelle_Click(object sender, EventArgs e)
@@ -516,6 +527,15 @@ namespace Market
 
             // Bilgileri Güncelle butonunu devre dışı bırakıyoruz
             BilgileriGuncelle.Enabled = false;
+        }
+
+
+
+     
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
 

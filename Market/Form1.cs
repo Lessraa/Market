@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using Npgsql;
-
+using System.Drawing;
 namespace Market
 {
     public partial class Form1 : Form
@@ -25,10 +25,7 @@ namespace Market
         public static string userPassword;
         public static string userType;
 
-        public static int userId;
-        public static string userName;
-        public static string userPassword;
-        public static string userType;
+    
 
         int TogMove;
         int MValX;
@@ -182,8 +179,7 @@ namespace Market
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            var kullaniciekle = new Form3();
-            kullaniciekle.Show();
+            
             
         }
 

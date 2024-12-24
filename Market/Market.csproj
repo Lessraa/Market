@@ -95,7 +95,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AktifKullanici.cs" />
     <Compile Include="Chat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +225,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\e98f13ab9d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

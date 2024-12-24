@@ -24,416 +24,16 @@ namespace Market
                              "Port=5432;" +
                              "Database=odev;" +
                              "Username=lessra;" +
-                             "Password=476634.Ss";
-
-            // DataGridView ayarları
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // PictureBox ayarları
-            pictureBox1 = new PictureBox();
-            pictureBox1.Size = new Size(100, 100);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Location = new Point(textBox2.Left, textBox2.Bottom + 10);
-
-            // Resim seçme butonu
-            btnResimSec = new Button();
-            btnResimSec.Text = "Resim Seç";
-            btnResimSec.Location = new Point(pictureBox1.Right + 10, pictureBox1.Top);
-            btnResimSec.Click += BtnResimSec_Click;
-
-            // Kontrolleri forma ekle
-            Controls.Add(pictureBox1);
-            Controls.Add(btnResimSec);
-
-            // Event handlers
-            dataGridView1.CellClick += dataGridView1_CellClick;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+                             "Password=476634.Ss";           
         }
 
         private ImageList imageList1;
         private ImageList imageList2;
 
 
-        private void BtnResimSec_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Resim Dosyaları|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
-                openFileDialog.Title = "Bir Resim Dosyası Seçin";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
-                }
-            }
-        }
-
-        private void KullanicilariListele()
-        {
-            try
-            {
-                using (var connection = new NpgsqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    string query = "SELECT * FROM kullanicilar ORDER BY id";
-
-                    using (var adapter = new NpgsqlDataAdapter(query, connection))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        dataGridView1.DataSource = null;
-                        dataGridView1.Columns.Clear();
-
-                        // Resim kolonu ekle
-                        DataGridViewImageColumn resimKolonu = new DataGridViewImageColumn();
-                        resimKolonu.HeaderText = "Resim";
-                        resimKolonu.Name = "Resim";
-                        resimKolonu.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                        resimKolonu.Width = 100;
-                        dataGridView1.Columns.Add(resimKolonu);
-
-                        // Diğer kolonları ekle
-                        foreach (DataColumn col in dataTable.Columns)
-                        {
-                            if (col.ColumnName != "resim") // Resim kolonunu tekrar ekleme
-                            {
-                                dataGridView1.Columns.Add(col.ColumnName, col.ColumnName);
-                            }
-                        }
-
-                        // Yönetici checkbox kolonunu ekle
-                        DataGridViewCheckBoxColumn yoneticiKolonu = new DataGridViewCheckBoxColumn();
-                        yoneticiKolonu.HeaderText = "Yönetici";
-                        yoneticiKolonu.Name = "YoneticiCheckbox";
-                        dataGridView1.Columns.Add(yoneticiKolonu);
-
-                        // Sil butonu kolonunu ekle
-                        DataGridViewButtonColumn silButonu = new DataGridViewButtonColumn();
-                        silButonu.HeaderText = "İşlem";
-                        silButonu.Name = "SilButonu";
-                        silButonu.Text = "Sil";
-                        silButonu.UseColumnTextForButtonValue = true;
-                        dataGridView1.Columns.Add(silButonu);
-
-                        // Verileri doldur
-                        foreach (DataRow row in dataTable.Rows)
-                        {
-                            int rowIndex = dataGridView1.Rows.Add();
-                            var gridRow = dataGridView1.Rows[rowIndex];
-
-                            // Resmi dönüştür ve göster
-                            if (row["resim"] != DBNull.Value)
-                            {
-                                byte[] resimBytes = (byte[])row["resim"];
-                                using (MemoryStream ms = new MemoryStream(resimBytes))
-                                {
-                                    gridRow.Cells["Resim"].Value = Image.FromStream(ms);
-                                }
-                            }
-
-                            // Diğer kolonları doldur
-                            foreach (DataColumn col in dataTable.Columns)
-                            {
-                                if (col.ColumnName != "resim")
-                                {
-                                    gridRow.Cells[col.ColumnName].Value = row[col.ColumnName];
-                                }
-                            }
-
-                            // Checkbox durumunu ayarla
-                            if (row["kullanici_tipi"] != null)
-                            {
-                                gridRow.Cells["YoneticiCheckbox"].Value =
-                                    row["kullanici_tipi"].ToString().ToLower() == "yonetici";
-                            }
-                        }
-
-                        // Görünüm ayarları
-                        dataGridView1.RowTemplate.Height = 100;
-                        dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-                        dataGridView1.DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue;
-                        dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
-                        dataGridView1.EnableHeadersVisualStyles = false;
-                        dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightBlue;
-                        dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-                        dataGridView1.ColumnHeadersHeight = 35;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Veri çekme hatası: {ex.Message}",
-                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dataGridView1.Columns["YoneticiCheckbox"].Index && e.RowIndex >= 0)
-            {
-                try
-                {
-                    DataGridViewCheckBoxCell checkbox =
-                        (DataGridViewCheckBoxCell)dataGridView1.Rows[e.RowIndex].Cells["YoneticiCheckbox"];
-
-                    bool yeniDeger = !(bool)checkbox.EditedFormattedValue;
-                    int kullaniciId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["id"].Value);
-                    string kullaniciAdi = dataGridView1.Rows[e.RowIndex].Cells["kullanici_adi"].Value.ToString();
-
-                    string yeniTip = !yeniDeger ? "yonetici" : "standart";
-                    var onay = MessageBox.Show(
-                        $"{kullaniciAdi} kullanıcısını '{yeniTip}' olarak değiştirmek istediğinize emin misiniz?",
-                        "Tip Değiştirme Onayı",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
-
-                    if (onay == DialogResult.Yes)
-                    {
-                        KullaniciTipiGuncelle(kullaniciId, yeniTip);
-                    }
-                    else
-                    {
-                        KullanicilariListele();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Hata oluştu: {ex.Message}",
-                        "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string kullaniciAdi = textBox1.Text.Trim();
-                string sifre = textBox2.Text.Trim();
-                string kullaniciTipi = checkBox1.Checked ? "'yonetici'" : "'standart'";
-
-                if (string.IsNullOrEmpty(kullaniciAdi) || string.IsNullOrEmpty(sifre))
-                {
-                    MessageBox.Show("Kullanıcı adı ve şifre alanları boş bırakılamaz!",
-                        "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Resmi byte dizisine çevir
-                byte[] resimBytes = null;
-                if (pictureBox1.Image != null)
-                {
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        resimBytes = ms.ToArray();
-                    }
-                }
-
-                using (var connection = new NpgsqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    string kontrolQuery = "SELECT COUNT(*) FROM kullanicilar WHERE kullanici_adi = @kullaniciadi";
-                    using (var kontrolCommand = new NpgsqlCommand(kontrolQuery, connection))
-                    {
-                        kontrolCommand.Parameters.AddWithValue("@kullaniciadi", kullaniciAdi);
-                        int kullaniciSayisi = Convert.ToInt32(kontrolCommand.ExecuteScalar());
-
-                        if (kullaniciSayisi > 0)
-                        {
-                            MessageBox.Show("Bu kullanıcı adı zaten kullanılıyor!",
-                                "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-
-                    string insertQuery = $@"INSERT INTO kullanicilar (kullanici_adi, sifre, kullanici_tipi, resim) 
-                                         VALUES (@kullaniciadi, @sifre, {kullaniciTipi}::kullanici_tipi_enum, @resim)";
-
-                    using (var command = new NpgsqlCommand(insertQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@kullaniciadi", kullaniciAdi);
-                        command.Parameters.AddWithValue("@sifre", sifre);
-
-                        if (resimBytes == null)
-                        {
-                            command.Parameters.AddWithValue("@resim", DBNull.Value);
-                        }
-                        else
-                        {
-                            command.Parameters.AddWithValue("@resim", resimBytes);
-                        }
-
-
-                        int etkilenenSatir = command.ExecuteNonQuery();
-
-                        if (etkilenenSatir > 0)
-                        {
-                            MessageBox.Show("Kullanıcı başarıyla eklendi.",
-                                "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            textBox1.Clear();
-                            textBox2.Clear();
-                            checkBox1.Checked = false;
-                            pictureBox1.Image = null;
-
-                            KullanicilariListele();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Kullanıcı eklenirken bir hata oluştu.",
-                                "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Kullanıcı ekleme sırasında hata oluştu: {ex.Message}",
-                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void KullaniciTipiGuncelle(int kullaniciId, string yeniTip)
-        {
-            /* try
-             {
-                 using (var connection = new NpgsqlConnection(connectionString))
-                 {
-                     connection.Open();
-                     string query = $"UPDATE kullanicilar SET kullanici_tipi = '{yeniTip}'::kullanici_tipi_enum WHERE id = @id";
-
-                     using (var command = new NpgsqlCommand(query, connection))
-                     {
-                         command.Parameters.AddWithValue("@id", kullaniciId);
-                         int etkilenenSatir = command.ExecuteNonQuery();
-
-                         if (etkilenenSatir > 0)
-                         {
-                             MessageBox.Show("Kullanıcı tipi başarıyla güncellendi.",
-                                 "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                             KullanicilariListele();
-                         }
-                         else
-                         {
-                             MessageBox.Show("Kullanıcı tipi güncellenirken bir hata oluştu.",
-                                 "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                         }
-                     }
-                 }
-             }
-             catch (Exception ex)
-             {
-                 MessageBox.Show($"Güncelleme işlemi sırasında hata oluştu: {ex.Message}",
-                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             }*/
-
-
-            try
-            {
-                using (var connection = new NpgsqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    // Sorgu tanımı
-                    const string query = "UPDATE kullanicilar SET kullanici_tipi = @yeniTip::kullanici_tipi_enum WHERE id = @id";
-
-                    using (var command = new NpgsqlCommand(query, connection))
-                    {
-                        // Parametrelerin eklenmesi
-                        command.Parameters.AddWithValue("@yeniTip", yeniTip);
-                        command.Parameters.AddWithValue("@id", kullaniciId);
-
-                        // Sorguyu çalıştır ve etkilenen satır sayısını al
-                        int etkilenenSatir = command.ExecuteNonQuery();
-
-                        // Sonuç kontrolü
-                        if (etkilenenSatir > 0)
-                        {
-                            MessageBox.Show("Kullanıcı tipi başarıyla güncellendi.",
-                                "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            KullanicilariListele();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Kullanıcı tipi güncellenirken bir hata oluştu.",
-                                "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Güncelleme işlemi sırasında hata oluştu: {ex.Message}",
-                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dataGridView1.Columns["SilButonu"].Index && e.RowIndex >= 0)
-            {
-                try
-                {
-                    int kullaniciId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["id"].Value);
-                    string kullaniciAdi = dataGridView1.Rows[e.RowIndex].Cells["kullanici_adi"].Value.ToString();
-
-                    var onay = MessageBox.Show($"{kullaniciAdi} kullanıcısını silmek istediğinize emin misiniz?",
-                        "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (onay == DialogResult.Yes)
-                    {
-                        KullaniciSil(kullaniciId);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Hata oluştu: {ex.Message}",
-                        "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void KullaniciSil(int kullaniciId)
-        {
-            try
-            {
-                using (var connection = new NpgsqlConnection(connectionString))
-                {
-                    connection.Open();
-                    string query = "DELETE FROM kullanicilar WHERE id = @id";
-
-                    using (var command = new NpgsqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@id", kullaniciId);
-                        int etkilenenSatir = command.ExecuteNonQuery();
-
-                        if (etkilenenSatir > 0)
-                        {
-                            MessageBox.Show("Kullanıcı başarıyla silindi.",
-                                "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            KullanicilariListele();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Kullanıcı silinirken bir hata oluştu.",
-                                "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Silme işlemi sırasında hata oluştu: {ex.Message}",
-                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        int TogMove;
+        int MValX;
+        int MValY;
 
         private void SetupListViews()
         {
@@ -722,7 +322,7 @@ namespace Market
         }
         private void yonetici_Load(object sender, EventArgs e)
         {
-            KullanicilariListele();
+        
             SetupListViews();
             LoadProducts();
             ShowTotalProfitAndSoldItems(); 
@@ -768,6 +368,46 @@ namespace Market
            
             kullanicilar kullanicilarFormu = new kullanicilar();
             kullanicilarFormu.Show();
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void yonetici_MouseDown(object sender, MouseEventArgs e)
+        {
+            TogMove = 1;
+            MValX = e.X;
+            MValY = e.Y;
+        }
+
+        private void yonetici_MouseUp(object sender, MouseEventArgs e)
+        {
+            TogMove = 0;
+        }
+
+        private void yonetici_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (TogMove == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - MValX, MousePosition.Y - MValY);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

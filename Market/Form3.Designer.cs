@@ -36,32 +36,34 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.PPsec = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.KullaniciEkle = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PPsec)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(144, 44);
+            this.panel1.Location = new System.Drawing.Point(108, 36);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(243, 240);
+            this.panel1.Size = new System.Drawing.Size(182, 195);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Market.Properties.Resources.add_user_symbol_interface_47768;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(2, 3);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(236, 234);
+            this.pictureBox1.Size = new System.Drawing.Size(177, 190);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -70,9 +72,10 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.MenuBar;
             this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Location = new System.Drawing.Point(98, 372);
+            this.panel3.Location = new System.Drawing.Point(74, 302);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(329, 57);
+            this.panel3.Size = new System.Drawing.Size(247, 46);
             this.panel3.TabIndex = 9;
             // 
             // textBox2
@@ -81,10 +84,9 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox2.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.textBox2.Location = new System.Drawing.Point(13, 17);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Location = new System.Drawing.Point(10, 14);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(304, 23);
+            this.textBox2.Size = new System.Drawing.Size(228, 19);
             this.textBox2.TabIndex = 4;
             this.textBox2.Text = "Şifre";
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
@@ -95,9 +97,10 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.MenuBar;
             this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Location = new System.Drawing.Point(98, 309);
+            this.panel2.Location = new System.Drawing.Point(74, 251);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(329, 57);
+            this.panel2.Size = new System.Drawing.Size(247, 46);
             this.panel2.TabIndex = 8;
             // 
             // textBox1
@@ -106,10 +109,9 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.textBox1.Location = new System.Drawing.Point(13, 16);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Location = new System.Drawing.Point(10, 13);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(304, 23);
+            this.textBox1.Size = new System.Drawing.Size(228, 19);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "Kullanıcı Adı";
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
@@ -118,65 +120,75 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(98, 435);
+            this.checkBox1.Location = new System.Drawing.Point(74, 353);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(77, 20);
+            this.checkBox1.Size = new System.Drawing.Size(64, 17);
             this.checkBox1.TabIndex = 10;
             this.checkBox1.Text = "Yönetici";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.pictureBox2);
-            this.panel4.Location = new System.Drawing.Point(111, 470);
+            this.panel4.Controls.Add(this.PPsec);
+            this.panel4.Location = new System.Drawing.Point(83, 382);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(109, 100);
+            this.panel4.Size = new System.Drawing.Size(82, 81);
             this.panel4.TabIndex = 11;
             // 
-            // pictureBox2
+            // PPsec
             // 
-            this.pictureBox2.Image = global::Market.Properties.Resources.e98f13ab9d;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(109, 100);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.PPsec.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PPsec.Image = global::Market.Properties.Resources.e98f13ab9d;
+            this.PPsec.Location = new System.Drawing.Point(2, 1);
+            this.PPsec.Margin = new System.Windows.Forms.Padding(2);
+            this.PPsec.Name = "PPsec";
+            this.PPsec.Size = new System.Drawing.Size(82, 81);
+            this.PPsec.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PPsec.TabIndex = 0;
+            this.PPsec.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(111, 576);
+            this.button1.Location = new System.Drawing.Point(83, 468);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 26);
+            this.button1.Size = new System.Drawing.Size(82, 27);
             this.button1.TabIndex = 12;
             this.button1.Text = "Resim Seç";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // KullaniciEkle
             // 
-            this.button2.Location = new System.Drawing.Point(251, 495);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(176, 49);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Kullanıcı Ekle";
-            this.button2.UseVisualStyleBackColor = true;
+            this.KullaniciEkle.Location = new System.Drawing.Point(188, 402);
+            this.KullaniciEkle.Margin = new System.Windows.Forms.Padding(2);
+            this.KullaniciEkle.Name = "KullaniciEkle";
+            this.KullaniciEkle.Size = new System.Drawing.Size(132, 40);
+            this.KullaniciEkle.TabIndex = 13;
+            this.KullaniciEkle.Text = "Kullanıcı Ekle";
+            this.KullaniciEkle.UseVisualStyleBackColor = true;
+            this.KullaniciEkle.Click += new System.EventHandler(this.KullaniciEkle_Click);
             // 
             // Form3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(238)))), ((int)(((byte)(243)))));
             this.BackgroundImage = global::Market.Properties.Resources.f59f55021806b80938219ea0213e09ef;
-            this.ClientSize = new System.Drawing.Size(532, 669);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(399, 544);
+            this.Controls.Add(this.KullaniciEkle);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form3";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form3_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form3_MouseMove);
@@ -188,7 +200,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PPsec)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,7 +217,7 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button KullaniciEkle;
+        private System.Windows.Forms.PictureBox PPsec;
     }
 }
