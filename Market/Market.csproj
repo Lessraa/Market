@@ -227,7 +227,16 @@
     <None Include="Resources\e98f13ab9d.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pngwing.com.png" />
+    <None Include="Resources\2d-graphic-wallpaper-with-colorful-grainy-gradients %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com %2812%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com %2813%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com %2814%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
