@@ -107,6 +107,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
     <Compile Include="GirisTipi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GirisTipi.resx">
       <DependentUpon>GirisTipi.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,6 +165,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="standart.resx">
       <DependentUpon>standart.cs</DependentUpon>
@@ -176,6 +186,57 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com %2811%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\desktop-wallpaper-teal-iphone-turquoise-and-black-thumbnail.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\61W.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asd.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icegif-608 %281%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gaplumbaa.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Adsız tasarım.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\360_F_860318940_RPEYG8qhieE8pyk4Fnc1N4qGEU2avo0q.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user-symbol-interface_47768.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2d-graphic-wallpaper-with-colorful-grainy-gradients.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\f59f55021806b80938219ea0213e09ef.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e98f13ab9d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2d-graphic-wallpaper-with-colorful-grainy-gradients %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com %2812%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com %2813%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com %2814%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

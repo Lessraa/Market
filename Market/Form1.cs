@@ -1,7 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using Npgsql;
-
+using System.Drawing;
 namespace Market
 {
     public partial class Form1 : Form
@@ -19,6 +20,16 @@ namespace Market
                              "Password=476634.Ss";
         }
 
+        public static int userId;
+        public static string userName;
+        public static string userPassword;
+        public static string userType;
+
+    
+
+        int TogMove;
+        int MValX;
+        int MValY;
         private void button1_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text.Trim();
@@ -37,7 +48,7 @@ namespace Market
                 {
                     connection.Open();
 
-                    string query = @"SELECT id, kullanici_adi, kullanici_tipi 
+                    string query = @"SELECT id, kullanici_adi,sifre, kullanici_tipi 
                                    FROM kullanicilar 
                                    WHERE kullanici_adi = @username 
                                    AND sifre = @password";
@@ -51,9 +62,10 @@ namespace Market
                         {
                             if (reader.Read())
                             {
-                                int userId = reader.GetInt32(0);
-                                string userName = reader.GetString(1);
-                                string userType = reader.GetString(2);
+                                 userId = reader.GetInt32(0);
+                                userName = reader.GetString(1);
+                                userPassword = reader.GetString(2);
+                                 userType = reader.GetString(3);
 
                                 MessageBox.Show("Giriş başarılı!", "Başarılı",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -117,6 +129,103 @@ namespace Market
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Kullanıcı Adı")
+            {
+                textBox1.Text = "";
+                textBox1.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Kullanıcı Adı";
+                textBox1.ForeColor = Color.Silver;
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "Şifre")
+            {
+                textBox2.Text = "";
+                textBox2.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                textBox2.Text = "Şifre";
+                textBox2.ForeColor = Color.Silver;
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            TogMove = 1;
+            MValX = e.X;
+            MValY = e.Y;
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            TogMove = 1;
+            MValX = e.X;
+            MValY = e.Y;
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            TogMove = 0;
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(TogMove == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - MValX, MousePosition.Y - MValY);
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            TogMove = 0;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (TogMove == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - MValX, MousePosition.Y - MValY);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
